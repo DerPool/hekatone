@@ -6,21 +6,6 @@ const BuyItem = (item_id) => {
 
 } 
 
-API.getTasks().then(res => {
-    console.log("Tasks")
-    console.log(res);
-});
-
-API.getTaskByID(1).then(res => {
-    console.log("Task by ID");
-    console.log(res); 
-})
-
-API.getStore().then(res => {
-    console.log("Store")
-    console.log(res);
-})
-
 
 
 let shop_opened = false
@@ -53,7 +38,6 @@ let full_profile = false
 $(document).ready(function() {
     $('.log__button').click(function() {
         API.getProfile($('#login_name').val()).then(profileInfo => {
-            console.log(profileInfo);
             $('.profile__info h3').text(profileInfo.full_name)
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
             let levels = Math.floor(profileInfo.stat.exp/1000)
