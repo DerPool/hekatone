@@ -14,12 +14,13 @@ class API_v1 {
         }
 
         async getTasks() {
-            let r = await fetch(`${this.base_url}?query=tasks`)
+            let r = await fetch(`${this.base_url}?query=tasks`);
+            return r.json();
         }
 
         async getTaskByID(id = 0) {
             let r = await fetch(`${this.base_url}?query=task&id=${id}`)
+            return r.json()
         }
-
 
 }
