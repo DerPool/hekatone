@@ -6,8 +6,8 @@ class API_v1 {
         /*
          * GET Routes
          */
-        async getProfile(id = 1) {
-            let r = await fetch(`${this.base_url}?query=profile&id=${id}`)
+        async getProfile(name = '') {
+            let r = await fetch(`${this.base_url}?query=profile&name=${name}`)
             return r.json();
         }
         

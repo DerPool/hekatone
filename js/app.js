@@ -2,6 +2,9 @@
 
 const API = new API_v1('http://game.local');
 
+const BuyItem = (item_id) => {
+
+} 
 
 API.getTasks().then(res => {
     console.log("Tasks")
@@ -45,10 +48,53 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
     }
 })
 
+let full_profile = false
+
 $(document).ready(function() {
-    API.getProfile().then(profileInfo => {
-        console.log(profileInfo);
-        $('.profile__info h3').text(profileInfo.full_name)
-        $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+    $('.log__button').click(function() {
+        API.getProfile($('#login_name').val()).then(profileInfo => {
+            console.log(profileInfo);
+            $('.profile__info h3').text(profileInfo.full_name)
+            $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+            let levels = Math.floor(profileInfo.stat.exp/1000)
+            $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+            $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+            $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+    
+            $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+            $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+    
+            $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+            $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+            $('.login__screen').hide();
+        })
     })
+
+
+    $('.profile__exit').click(function(e){
+        e.preventDefault()
+        e.stopImmediatePropagation() 
+        $('.login__screen').css('display', 'flex');
+    })
+
+    $('.nav__profile').click(function(){
+        $('profile__full').show(300);
+    })
+
+    $('.profile__top').click(function(){
+        if (!full_profile) {
+            $('.profile__full-outer').css('opacity', '1');
+            $('.profile__full-outer').css('height', '200px');
+            full_profile = true
+        } else {
+            $('.profile__full-outer').css('opacity', '0');
+            $('.profile__full-outer').css('height', '0'); 
+            full_profile = false;   
+        }
+    })
+
 })
+
+
+
+

@@ -14,6 +14,12 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="login__screen">
+        <div class="log_form">
+        <input type="text" name="" id="login_name" placeholder="Ваше имя">
+        <a href="#" class="log__button">Начать</a>
+        </div>
+    </div>
     <nav>
         <div class="nav__inner">
             <div class="nav__menu">
@@ -22,17 +28,48 @@
                 <a href="#" id='store_opener'>Магазин</a>
             </div>
             <div class="nav__profile">
-                <div class="profile__avatar">
-                    <img src="http://placehold.it/100x100" alt="">
-                </div>
-                <div class="profile__info">
-                    <h3>Имя Фамилия</h3>
-                    <span class="level">10 уровень</span>
-                </div>
-                <div class="profile__exit">
+                <div class="profile__top">
+                    <div class="profile__avatar">
                         <img src="http://placehold.it/100x100" alt="">
                     </div>
+                    <div class="profile__info">
+                        <h3>Имя Фамилия</h3>
+                        <span class="level">10 уровень</span>
+                    </div>
+                    <div class="profile__exit">
+                        
+                    </div>
+                </div>
+                <div class="profile__full-outer">
+                    <div class="profile__full">
+                        <div class="full__inner-text">
+                            <div class="inner__progress byt">
+                                <h5>Бытовые вопросы</h5>
+                                <div class="progress__bar">
+                                    <div class="bar__inner"><span class='curval'></span></div>
+                                </div>
+                            </div>
+                            <div class="inner__progress ofis">
+                                    <h5>Офисные вопросы</h5>
+                                    <div class="progress__bar">
+                                        <div class="bar__inner"><span class='curval'></span></div>
+                                    </div>
+                                </div>
+                                <div class="inner__progress sud">
+                                        <h5>Судебные дела</h5>
+                                        <div class="progress__bar">
+                                            <div class="bar__inner"><span class='curval'></span></div>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="full__footer-info">
+                            <h5>общий прогресс</h5>
+                            <span class='full__progress'></span>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         </div>
 
     </nav>
