@@ -16,6 +16,9 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
         shop_opened = true
         $('.store__items').html('')
         $('#store').show(300);
+        $('main').css('background', 'url(./assets/images/shop.png) no-repeat');
+        $('main').css('background-size', 'cover');
+        $('main').css('overflow-y','auto');
         $('#rutina_opener, #cases_opener').removeClass('active_link');
         $(this).addClass('active_link');
         $('#store').find('.shop__items').append($('<div class="loader" style="width: 100%; display: flex; justify-content: center;"><img src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"></div>'))
