@@ -477,7 +477,7 @@ label {
     padding:24px;
 }
 .question__header p {
-    font-size: 24px;
+    font-size: 20px;
     color: #333;
 }
 
@@ -489,7 +489,7 @@ label {
 .answer {
     padding: 12px 56px;
     background: #fff;
-    font-size: 24px;
+    font-size: 20px;
     color: #333;
     cursor: pointer;
     transition: all .225s ease-in-out;
