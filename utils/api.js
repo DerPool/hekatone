@@ -30,5 +30,14 @@ class API_v1 {
             let r = await fetch(`${this.base_url}?query=create-profile&name=${name}`)
             return r.json()
         }
+        
+        async sendAnswer(userid = 1, questionid = 0, taskid = 4, answers = []) {
+            let url = this.base_url + "?query=task-answer&task_id=" + taskid + "&question_id=" + questionid + "&user_id=" + userid
+            for(const answer of answers) {
+                url += '&answers[]=' + answer;
+            } 
+            let r = await fetch(url)
+            return r.json()
+        }
 
 }

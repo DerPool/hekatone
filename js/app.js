@@ -6,7 +6,7 @@ const BuyItem = (item_id) => {
 
 } 
 
-
+let data = {}
 
 let shop_opened = false
 
@@ -50,6 +50,7 @@ $(document).ready(function() {
     
             $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
             $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+            data.userid = profileInfo.id;
             $('.login__screen').hide();
         }).catch(e => {
             API.createProfile($("#login_name").val()).then(res => {
@@ -66,6 +67,8 @@ $(document).ready(function() {
             
                     $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
                     $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                    
+                    data.userid = profileInfo.id;
                     $('.login__screen').hide();
                 })
             })
@@ -101,12 +104,14 @@ $(document).ready(function() {
         $('main').css('overflow-y', 'auto');
         $('#cases_opener').removeClass('active_link')
         $('.question__answers').html('');
+        data.taskid = 4;
         API.getTaskByID(4).then(task =>  {
             console.log(task)
             $('.question__header p').text(task.questions[0].text);
+            data.questionid = task.questions[0].id;
             const answers = task.questions[0].answers;
             for (const answer of answers) {
-                $('.question__answers').append($(`<input type='checkbox' id='answ${answer.id}' style='display: none;'><label for='answ${answer.id}' class="answer" data-valid='${answer.valid}'>${answer.text}</label>`))
+                $('.question__answers').append($(`<div><input type='checkbox' data-answer=${answer.id} data-valid='${answer.valid}' id='answ${answer.id}' style='display: none;'><label for='answ${answer.id}' class="answer" >${answer.text}</label></div>`))
             }
             $('.question').delay(500).show(300)
         })
@@ -124,6 +129,33 @@ $(document).ready(function() {
     $('.go_back, .go_back img').click(function(){
         $('.question__answers').html('');
         $('.question').hide();
+    })
+
+    $('.send__button').click(function(){
+        let answers_here = []
+        
+        $('input[type="checkbox"]:checked').each(function(ind, el) {
+            answers_here.push($(el).data('answer'))
+            let answ_id = $(el).data('answer');
+            let answ_valid = $(el).data('valid');
+            if(!answ_valid){
+                $(el).parent().find('label').css('background', '#f1e5e1');
+            } else {
+                $(el).parent().find('label').css('background', '#fff');
+            }
+
+        })
+        if(!(answers_here.includes(2))) {
+            $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1')
+        }
+        if(!(answers_here.includes(5))) {
+            $('input[type="checkbox"][data-answer="5"]').parent().find('label').css('background', '#f1e5e1')
+        }
+        if(!(answers_here.includes(6))) {
+            $('input[type="checkbox"][data-answer="6"]').parent().find('label').css('background', '#f1e5e1')
+        }
+        API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
+
     })
 })
 

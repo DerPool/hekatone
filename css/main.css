@@ -201,6 +201,7 @@ nav {
     position: absolute;
     width: calc(100% - 30px);
     opacity: 0;
+    z-index: 99;
     top: 100%;
     transition: all .225s ease-in-out;
     height: 0;
