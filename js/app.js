@@ -16,6 +16,8 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
         shop_opened = true
         $('.store__items').html('')
         $('#store').show(300);
+        $('#rutina_opener, #cases_opener').removeClass('active_link');
+        $(this).addClass('active_link');
         $('#store').find('.shop__items').append($('<div class="loader" style="width: 100%; display: flex; justify-content: center;"><img src="https://media.giphy.com/media/17mNCcKU1mJlrbXodo/giphy.gif"></div>'))
         API.getStore().then(storeData => {
             
@@ -107,7 +109,7 @@ $(document).ready(function() {
         $(this).addClass('active_link');
         $('main').css('background', 'unset');
         $('main').css('overflow-y', 'auto');
-        $('#cases_opener').removeClass('active_link')
+        $('#cases_opener, #store_opener').removeClass('active_link')
         $('.question__answers').html('');
         data.taskid = 4;
         API.getTaskByID(4).then(task =>  {
@@ -130,7 +132,7 @@ $(document).ready(function() {
         $('main').css('background-size', 'cover');
         $('main').css('overflow-y','auto');
         $(this).addClass('active_link')
-        $('#rutina_opener').removeClass('active_link')
+        $('#rutina_opener, #store_opener').removeClass('active_link')
         data.taskid = 5;
         API.getTaskByID(5).then(task => {
             console.log(task);
@@ -189,6 +191,7 @@ $(document).ready(function() {
             $('input[type="radio"][data-answer="1"]').parent().find('label').css('background', '#f1e5e1');
             $('.question').css('transform','translateX(20px)').css('transition','.5s');
             $('.question__tooltip').show();    
+            cnt--;
             }
         if(!(answers_here.includes(2)) && (cases) && (second)) {
                 $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
@@ -214,9 +217,14 @@ $(document).ready(function() {
             $('.question__tooltip').show();     
             cnt--
         }
+        
         API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
+        if (rutina) {
         $('.true_answers_count').text(cnt + " из 3")
-
+        }
+        else {
+            $('.true_answers_count').text(cnt + " из 1")
+        }
         if (answers_here.includes(2) && answers_here.includes(5) && answers_here.includes(6) && (rutina == true)) {
             $('.question__answers').html('');
             $('.question, .question__tooltip').hide();

@@ -584,3 +584,26 @@ input[type='radio']:checked + label:after {
     color:#333;
     float:right
 }
+
+.progress_bar_actions {
+    /* float: right; */
+    position: absolute;
+    right: 50px;
+    border-radius: 36px;
+    top:20px;
+    z-index: 99999999;
+    background: #fff;
+    padding: 0 24px 24px 24px;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.25);}
+    .money_progress {
+        float:right;
+        margin-top:20px;
+        font-weight:bold;
+        font-size:18px;
+    }
+    .progress_bar_actions .inner__progress {
+        min-width:200px;
+    }
+    .progress_bar_actions .progress__bar {
+        height:6px;
+    }
