@@ -43,7 +43,13 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
 let full_profile = false
 $(document).ready(function(){
     $('.log__button').click(function() {
-        setInterval(() => {$('.flash_question').css('bottom', '0%')}, 5000)
+        setTimeout(() => {
+            let date = new Date
+            let hrs = date.getHours()
+            let mins = date.getMinutes()
+            $('.flash_date').text(`${hrs}:${mins}`);
+            $('.flash_question').css('bottom', '0%')
+        }, 5000)
         API.getProfile($('#login_name').val()).then(profileInfo => {
             $('.profile__info h3').text(profileInfo.full_name)
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
