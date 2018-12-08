@@ -30,6 +30,10 @@ input {
     appearance: none;
 }
 
+input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 #store {
     display: none;
     background: #fff;
@@ -344,9 +348,15 @@ nav {
     border-radius: 4px;
     text-transform: uppercase;
     font-weight: 600;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     padding: 18px 32px;
     margin-left: 16px;
+    transition: all .225s ease-in-out;
     text-decoration: none;
+}
+
+.log__button:hover {
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
 }
 
 .send {
