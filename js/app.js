@@ -201,7 +201,6 @@ $(document).ready(function() {
             cnt--
         }
         API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
-<<<<<<< HEAD
         $('.true_answers_count').text(cnt + " из 3")
 
         if (answers_here.includes(2) && answers_here.includes(5) && answers_here.includes(6) && (rutina == true)) {
@@ -247,11 +246,6 @@ $(document).ready(function() {
         }
         /*$('.question__answers').html('');
         $('.question').hide();*/
-=======
-            $('.question__answers').html('');
-            $('.question').hide();
-
->>>>>>> 953910ef23140f796de3a2a639556e8267de1792
     })
 })
 
