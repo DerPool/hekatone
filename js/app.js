@@ -1,6 +1,6 @@
 
 
-const API = new API_v1('http://game.local/');
+const API = new API_v1('https://game.devlegal.ru/');
 
 const BuyItem = (item_id) => {
 
@@ -51,6 +51,7 @@ $(document).ready(function() {
             $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
             $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
             data.userid = profileInfo.id;
+            console.log(data)
             $('.login__screen').hide();
         }).catch(e => {
             API.createProfile($("#login_name").val()).then(res => {
@@ -67,8 +68,9 @@ $(document).ready(function() {
             
                     $('.sud').find('.bar__inner').css('width', (profileInfo2.stat.issue.law/1000)*100 + '%');
                     $('.sud').find('.bar__inner .curval').text(profileInfo2.stat.issue.law);
-                    
+                    console.log(profileInfo2)
                     data.userid = profileInfo2.id;
+                    console.log(data)
                     $('.login__screen').hide();
                 })
             })
