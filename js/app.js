@@ -41,9 +41,9 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
 })
 
 let full_profile = false
-
-$(document).ready(function() {
+$(document).ready(function(){
     $('.log__button').click(function() {
+        setInterval(() => {$('.flash_question').css('bottom', '0%')}, 5000)
         API.getProfile($('#login_name').val()).then(profileInfo => {
             $('.profile__info h3').text(profileInfo.full_name)
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
@@ -86,6 +86,9 @@ $(document).ready(function() {
         })
     })
 
+    $('.btns').click(function(){
+        $('.flash_question').css('bottom', '-500%');
+    })
 
     $('.profile__exit').click(function(e){
         e.preventDefault()
