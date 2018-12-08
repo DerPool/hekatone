@@ -98,6 +98,7 @@ $(document).ready(function() {
     $('#rutina_opener').click(function(){
         $(this).addClass('active_link');
         $('main').css('background', 'unset');
+        $('main').css('overflow-y', 'auto');
         $('#cases_opener').removeClass('active_link')
         $('.question__answers').html('');
         API.getTaskByID(4).then(task =>  {
@@ -119,6 +120,10 @@ $(document).ready(function() {
 
         $(this).addClass('active_link')
         $('#rutina_opener').removeClass('active_link')
+    })
+    $('.go_back, .go_back img').click(function(){
+        $('.question__answers').html('');
+        $('.question').hide();
     })
 })
 
