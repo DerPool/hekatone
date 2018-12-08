@@ -1,2 +1,5 @@
-import Utils from '../utils/utils';
 
+
+const API = new API_v1('');
+
+API.getProfile();

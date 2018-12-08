@@ -1,3 +1,3 @@
-export default class Utils {
-
-};
+class Utils {
+    
+}
