@@ -93,7 +93,7 @@ $(document).ready(function(){
     })
 
     $('.btns').click(function(){
-        $('.flash_question').css('bottom', '-500%');
+        $('.flash_question').css('bottom', '-500%').delay(300).hide();
     })
 
     $('.profile__exit').click(function(e){
