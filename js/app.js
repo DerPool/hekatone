@@ -89,11 +89,11 @@ $(document).ready(function() {
     $('.profile__top').click(function(){
         if (!full_profile) {
             $('.profile__full-outer').css('opacity', '1');
-            $('.profile__full-outer').css('height', '200px');
+            $('.profile__full-outer').css('height', '200px').css('pointer-events','all');
             full_profile = true
         } else {
             $('.profile__full-outer').css('opacity', '0');
-            $('.profile__full-outer').css('height', '0'); 
+            $('.profile__full-outer').css('height', '0').css('pointer-events','none'); 
             full_profile = false;   
         }
     })
@@ -107,7 +107,7 @@ $(document).ready(function() {
         data.taskid = 4;
         API.getTaskByID(4).then(task =>  {
             console.log(task)
-            $('.question__header p').text(task.questions[0].text);
+            $('.question .question__header p').text(task.questions[0].text);
             data.questionid = task.questions[0].id;
             const answers = task.questions[0].answers;
             for (const answer of answers) {
@@ -122,19 +122,32 @@ $(document).ready(function() {
         $('.question').hide();
         $('main').css('background', 'url(./assets/images/Game.png) no-repeat');
         $('main').css('background-size', 'cover');
-
+        $('main').css('overflow-y','auto');
         $(this).addClass('active_link')
         $('#rutina_opener').removeClass('active_link')
+        data.taskid = 5;
+        API.getTaskByID(5).then(task => {
+            console.log(task);
+            $('.question .question__header p').text(task.questions[0].text);
+            data.questionid = task.questions[0].id;
+            const answers = task.questions[0].answers;
+            for (const answer of answers) {
+                $('.question__answers').append($(`<div><input type='radio' name='one' data-answer=${answer.id} data-valid='${answer.valid}' id='answ${answer.id}' style='display: none;'><label for='answ${answer.id}' class="answer" >${answer.text}</label></div>`))
+            }
+            $('.question').delay(500).show(300);
+        })
     })
     $('.go_back, .go_back img').click(function(){
         $('.question__answers').html('');
         $('.question').hide();
+        $('.question_tooltip').hide();
     })
 
     $('.send__button').click(function(){
         let answers_here = []
-        
+        let rutina = false;
         $('input[type="checkbox"]:checked').each(function(ind, el) {
+            rutina = true;
             answers_here.push($(el).data('answer'))
             let answ_id = $(el).data('answer');
             let answ_valid = $(el).data('valid');
@@ -145,18 +158,92 @@ $(document).ready(function() {
             }
 
         })
+
+            let cases = false;
+        $('input[type="radio"]:checked').each(function(ind, el) {
+            cases = true;
+            answers_here.push($(el).data('answer'))
+            let answ_id = $(el).data('answer');
+            let answ_valid = $(el).data('valid');
+            if(!answ_valid){
+                $(el).parent().find('label').css('background', '#f1e5e1');
+            } else {
+                $(el).parent().find('label').css('background', '#e7f1e1');
+            }
+
+        })
+
+        let cnt = 3;
+
+        if(!(answers_here.includes(5))) {
+            $('input[type="radio"][data-answer="5"]').parent().find('label').css('background', '#f1e5e1');
+            $('.question').css('transform','translateX(20px)').css('transition','.5s');
+            $('.question__tooltip').show();        }
+
         if(!(answers_here.includes(2))) {
-            $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1')
+            $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
+             $('.question').css('transform','translateX(20px)').css('transition','.5s');
+            $('.question__tooltip').show(); 
+            cnt--;    
         }
         if(!(answers_here.includes(5))) {
-            $('input[type="checkbox"][data-answer="5"]').parent().find('label').css('background', '#f1e5e1')
+            $('input[type="checkbox"][data-answer="5"]').parent().find('label').css('background', '#f1e5e1');
+             $('.question').css('transform','translateX(20px)').css('transition','.5s');
+            $('.question__tooltip').show();     
+            cnt--;
         }
         if(!(answers_here.includes(6))) {
-            $('input[type="checkbox"][data-answer="6"]').parent().find('label').css('background', '#f1e5e1')
+            $('input[type="checkbox"][data-answer="6"]').parent().find('label').css('background', '#f1e5e1');
+             $('.question').css('transform','translateX(20px)').css('transition','.5s');
+            $('.question__tooltip').show();     
+            cnt--
         }
         API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
-        $('.question__answers').html('');
-        $('.question').hide();
+        $('.true_answers_count').text(cnt + " из 3")
+
+        if (answers_here.includes(2) && answers_here.includes(5) && answers_here.includes(6) && (rutina == true)) {
+            $('.question__answers').html('');
+            $('.question, .question__tooltip').hide();
+            API.getProfile($('#login_name').val()).then(profileInfo => {
+                $('.profile__info h3').text(profileInfo.full_name)
+                $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+                let levels = Math.floor(profileInfo.stat.exp/1000)
+                $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+        
+                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+        
+                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                data.userid = profileInfo.id;
+                $('.login__screen').hide();
+            })
+         
+        }
+        if ((answers_here.includes(5) && (cases == true))) {
+            $('.question__answers').html('');
+            $('.question, .question__tooltip').hide();
+            API.getProfile($('#login_name').val()).then(profileInfo => {
+                $('.profile__info h3').text(profileInfo.full_name)
+                $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+                let levels = Math.floor(profileInfo.stat.exp/1000)
+                $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+        
+                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+        
+                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                data.userid = profileInfo.id;
+                $('.login__screen').hide();
+            })
+        }
+        /*$('.question__answers').html('');
+        $('.question').hide();*/
     })
 })
 

@@ -428,12 +428,26 @@ label {
 .question {
     display: none;
     background: #fff;
-    width: 600px;
+    width: 500px;
+    z-index:20;
     position: relative;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.25);
     border-radius: 12px;
-    margin: 40px auto;
+    margin: 40px 0px;
     padding: 42px;
+}
+.question__tooltip {
+    display:none;
+    background:#fff;
+    width:500px;
+    z-index:19;
+    position:relative;
+    transition:.5s;
+    box-shadow:0 0 24px 0 rgba(0,0,0,.25);
+    border-radius: 12px;
+    margin:40px 0px;
+    padding:42px;
+
 }
 
 .go_back {
@@ -457,6 +471,9 @@ label {
     padding: 24px;
 }
 
+.tooltip {
+    padding:24px;
+}
 .question__header p {
     font-size: 24px;
     color: #333;
@@ -486,7 +503,7 @@ label {
 }
 
 
-input + label:before {
+input[type='checkbox'] + label:before {
     content: "";
     position: absolute;
     left: 12px;
@@ -500,12 +517,12 @@ input + label:before {
 
 }
 
-input:checked + label:before {
+input[type='checkbox']:checked + label:before {
     background: #89bb6f;
     border: 1px solid #89bb6f;
 }
 
-input:checked + label:after {
+input[type='checkbox']:checked + label:after {
     left: 16px;
     top: 14px;
     position: absolute;
@@ -516,4 +533,54 @@ input:checked + label:after {
     border-left: 3px solid #fff;
     border-bottom: 3px solid #fff;
     transform: rotate(-45deg);
+}
+
+input[type='radio'] + label:before {
+    content: "";
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius:50%;
+    background: transparent;
+    transition: all .225s ease-in-out;
+    display: block;
+    border: 1px solid #d0d0d0;
+
+}
+
+input[type='radio']:checked + label:before {
+
+    border: 1px solid #89bb6f;
+}
+
+input[type='radio']:checked + label:after {
+    left: 18px;
+    top: 16px;
+    position: absolute;
+    display: block;
+    content: '';
+    border-radius:50%;
+    background:#89bb6f;
+    width:18px;
+    height:18px;
+}
+
+.tooltip {
+    line-height:26px;
+    color:#333;
+    font-size:14px;
+}
+.questions__block {
+    display:flex;
+    justify-content:center;
+    flex-direction:row;
+}
+.question__tooltip .question__header {
+    min-height:unset;
+}
+.true_answers_count {
+    color:#333;
+    float:right
 }
