@@ -9,6 +9,15 @@ body {
     background: #89bb6f;
 }
 
+main {
+    height: 100vh;
+}
+
+.active_link {
+    background: #89bb6f;
+    border-radius: 32px;
+}
+
 input {
     padding: 18px 18px;
     font-size: 16px;
@@ -138,6 +147,7 @@ nav {
 .nav__profile {
     display: flex;
     margin-left: 20px;
+    position: relative;
     flex-direction: column;
 }
 
@@ -187,7 +197,10 @@ nav {
 .profile__full-outer {
     padding-left: 12px;
     padding-right: 12px;
+    position: absolute;
+    width: calc(100% - 30px);
     opacity: 0;
+    top: 100%;
     transition: all .225s ease-in-out;
     height: 0;
 }
@@ -335,5 +348,53 @@ label {
 }
 
 ::placeholder {
+    color: #fff;
+}
+
+.question {
+    display: none;
+    width: 600px;
+    margin: 20px auto;
+}
+
+.question__header {
+    min-height: 100px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.question__header p {
+    font-size: 16px;
+    color: #333;
+}
+
+.question__answers {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    padding: 12px 24px;
+    background: #fff;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 12px;
+    margin: 4px 4px;
+    transition: all .225s ease-in-out;
+}
+
+.answer:hover {
+    color: #89bb6f;
+}
+
+input:checked + label {
+    background: #89bb6f;
+    color: #fff;
+}
+
+input:checked + label:hover {
     color: #fff;
 }

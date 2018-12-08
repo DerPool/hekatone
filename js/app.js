@@ -95,6 +95,31 @@ $(document).ready(function() {
         }
     })
 
+    $('#rutina_opener').click(function(){
+        $(this).addClass('active_link');
+        $('main').css('background', 'unset');
+        $('#cases_opener').removeClass('active_link')
+        $('.question__answers').html('');
+        API.getTaskByID(4).then(task =>  {
+            console.log(task)
+            $('.question__header p').text(task.questions[0].text);
+            const answers = task.questions[0].answers;
+            for (const answer of answers) {
+                $('.question__answers').append($(`<input type='checkbox' id='answ${answer.id}' style='display: none;'><label for='answ${answer.id}' class="answer" data-valid='${answer.valid}'>${answer.text}</label>`))
+            }
+            $('.question').delay(500).show(300)
+        })
+    })
+
+    $('#cases_opener').click(function(){
+        $('.question__answers').html('');
+        $('.question').hide();
+        $('main').css('background', 'url(./assets/images/Game.png) no-repeat');
+        $('main').css('background-size', 'cover');
+
+        $(this).addClass('active_link')
+        $('#rutina_opener').removeClass('active_link')
+    })
 })
 
 

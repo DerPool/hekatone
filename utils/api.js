@@ -29,6 +29,6 @@ class API_v1 {
         async createProfile(name = 'user'){
             let r = await fetch(`${this.base_url}?query=create-profile&name=${name}`)
             return r.json()
-        } 
+        }
 
 }
