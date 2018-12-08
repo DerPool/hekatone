@@ -1,6 +1,6 @@
 
 
-const API = new API_v1('http://game.local');
+const API = new API_v1('http://game.local/');
 
 const BuyItem = (item_id) => {
 
@@ -54,21 +54,21 @@ $(document).ready(function() {
             $('.login__screen').hide();
         }).catch(e => {
             API.createProfile($("#login_name").val()).then(res => {
-                API.getProfile($('#login_name').val()).then(profileInfo => {
-                    $('.profile__info h3').text(profileInfo.full_name)
-                    $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
-                    let levels = Math.floor(profileInfo.stat.exp/1000)
-                    $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-                    $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-                    $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+                API.getProfile($('#login_name').val()).then(profileInfo2 => {
+                    $('.profile__info h3').text(profileInfo2.full_name)
+                    $('.level').text(Math.floor(profileInfo2.stat.exp/1000) + ' уровень');
+                    let levels = Math.floor(profileInfo2.stat.exp/1000)
+                    $('.full__progress').text(profileInfo2.stat.exp - levels * 1000+'/1000');
+                    $('.byt').find('.bar__inner').css('width', (profileInfo2.stat.issue.domestic/1000)*100 + '%');
+                    $('.byt').find('.bar__inner .curval').text(profileInfo2.stat.issue.domestic);
             
-                    $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-                    $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+                    $('.ofis').find('.bar__inner').css('width', (profileInfo2.stat.issue.office/1000)*100 + '%');
+                    $('.ofis').find('.bar__inner .curval').text(profileInfo2.stat.issue.office);
             
-                    $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-                    $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                    $('.sud').find('.bar__inner').css('width', (profileInfo2.stat.issue.law/1000)*100 + '%');
+                    $('.sud').find('.bar__inner .curval').text(profileInfo2.stat.issue.law);
                     
-                    data.userid = profileInfo.id;
+                    data.userid = profileInfo2.id;
                     $('.login__screen').hide();
                 })
             })
@@ -155,7 +155,8 @@ $(document).ready(function() {
             $('input[type="checkbox"][data-answer="6"]').parent().find('label').css('background', '#f1e5e1')
         }
         API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
-
+        $('.question__answers').html('');
+        $('.question').hide();
     })
 })
 
