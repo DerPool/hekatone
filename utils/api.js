@@ -26,4 +26,9 @@ class API_v1 {
             return r.json()
         }
 
+        async createProfile(name = 'user'){
+            let r = await fetch(`${this.base_url}?query=create-profile&name=${name}`)
+            return r.json()
+        } 
+
 }

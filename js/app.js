@@ -67,7 +67,25 @@ $(document).ready(function() {
             $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
             $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
             $('.login__screen').hide();
-        }).catch(e => {alert('Нет юзера')})
+        }).catch(e => {
+            API.createProfile($("#login_name").val()).then(res => {
+                API.getProfile($('#login_name').val()).then(profileInfo => {
+                    $('.profile__info h3').text(profileInfo.full_name)
+                    $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+                    let levels = Math.floor(profileInfo.stat.exp/1000)
+                    $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+                    $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+                    $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+            
+                    $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+                    $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+            
+                    $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+                    $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                    $('.login__screen').hide();
+                })
+            })
+        })
     })
 
 
