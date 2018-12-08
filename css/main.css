@@ -37,12 +37,13 @@ input:focus {
 #store {
     display: none;
     background: #fff;
+    
     border: 3px solid rgba(0,0,0,.3);
     border-radius: 16px;
     width: 800px;
     height: 400px;
     flex-direction: row;
-    margin: 0 auto;
+    margin: 100px auto;
     z-index: 999;
     flex-wrap: wrap;
     overflow-y: scroll;
