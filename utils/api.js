@@ -3,8 +3,11 @@ class API_v1 {
             this.base_url = base_url;
         }
 
-        async getProfile() {
-            let r = await fetch(`${this.base_url}?query=profile`)
+        /*
+         * GET Routes
+         */
+        async getProfile(id = 1) {
+            let r = await fetch(`${this.base_url}?query=profile&id=${id}`)
             return r.json();
         }
         
@@ -18,7 +21,7 @@ class API_v1 {
             return r.json();
         }
 
-        async getTaskByID(id = 0) {
+        async getTaskByID(id = 1) {
             let r = await fetch(`${this.base_url}?query=task&id=${id}`)
             return r.json()
         }
