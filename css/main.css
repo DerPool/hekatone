@@ -50,11 +50,11 @@ input:focus {
 
 .shop__item {
     width: 150px;
-    height: 150px;
+    height: 200px;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    background: #ccc;
+    background: #fff;
     margin: 0 8px;
     border-radius: 12px;
     padding: 12px;
@@ -82,7 +82,21 @@ nav {
 }
 
 .shop__item .price {
+    position: relative;
+    font-weight: 600;
     align-self: flex-end;
+}
+
+.shop__item .price:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: url(../assets/images/money.png) no-repeat;
+    background-size: cover;
+    display: block;
+    position: absolute;
+    left: -20px;
+    top: 0;
 }
 
 .nav__inner {

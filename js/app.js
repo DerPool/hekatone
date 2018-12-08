@@ -20,7 +20,7 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
             
             $('.loader').remove();
             for (const storeItem of storeData) {
-                $('.shop__items').append($(`<div class='shop__item'><h3>${storeItem.title}</h3><p>${storeItem.description}</p><span class="price">${storeItem.cost}</span></div>`))
+                $('.shop__items').append($(`<div class='shop__item'><img src="https://placehold.it/100x100"><h3>${storeItem.title}</h3><p>${storeItem.description}</p><span class="price">${storeItem.cost}</span></div>`))
             }
 
         }).catch((e) => {
