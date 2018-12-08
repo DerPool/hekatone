@@ -1,6 +1,6 @@
 
 
-const API = new API_v1('https://game.devlegal.ru/');
+const API = new API_v1('https://artebedev.ru/');
 
 const BuyItem = (item_id) => {
 
@@ -157,8 +157,9 @@ $(document).ready(function() {
             $('input[type="checkbox"][data-answer="6"]').parent().find('label').css('background', '#f1e5e1')
         }
         API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
-        $('.question__answers').html('');
-        $('.question').hide();
+            $('.question__answers').html('');
+            $('.question').hide();
+
     })
 })
 
