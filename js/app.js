@@ -141,7 +141,7 @@ $(document).ready(function() {
             if(!answ_valid){
                 $(el).parent().find('label').css('background', '#f1e5e1');
             } else {
-                $(el).parent().find('label').css('background', '#fff');
+                $(el).parent().find('label').css('background', '#e7f1e1');
             }
 
         })
