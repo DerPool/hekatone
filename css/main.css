@@ -39,10 +39,10 @@ input:focus {
     display: none;
     background: #fff;
     
-    border: 3px solid rgba(0,0,0,.3);
+    border: 0px solid rgba(0,0,0,.3);
     border-radius: 16px;
-    width: 800px;
-    height: 400px;
+    width: 600px;
+    height: 450px;
     flex-direction: row;
     margin: 100px auto;
     z-index: 999;
@@ -730,4 +730,80 @@ input[type='radio']:checked + label:after {
     }
     .btns__decline {
         background: #6c6c6c;
+    }
+    .shop__tabs ul {
+        display:flex;
+        flex-direction:row;
+        justify-content:flex-start;
+        font-weight:bold;
+        opacity:.8;
+        font-size:18px;
+        list-style-type:none;
+        border-bottom:1px solid #000;
+
+
+
+    }
+    .shop__tabs {
+        width:600px;
+    }
+    .shop__items {
+        justify-content:space-around;
+    }
+    .shop__inner {
+        padding:42px 48px;
+    }
+    .shop__tabs li {
+        padding-bottom:4px;
+        margin-right:32px;
+        border-bottom:7px solid #fff
+        cursor:pointer;
+    }
+    .shop__tabs li.active_tab {
+        border-bottom:7px solid #000
+    }
+
+    .shop__items .items {
+        width: 100%;
+    }
+    .shop__items .item div {
+        width:240px;
+        height:140px;
+        cursor:pointer;
+        border:1px solid #000;
+        background:#fff;
+        position:relative;
+    }
+    .shop__items .item div:after {
+        content:"";
+        background:url('../assets/images/telega.svg') no-repeat;
+        height:24px;
+        width:24px;
+        position:absolute;
+        border-radius:4px;
+        bottom:8px;
+        right:8px;
+        background-color:#89bb6f;
+
+    }
+    .shop__items .item h3 {
+        font-weight:normal;
+        font-size:18px;
+        color:#333;
+        margin:12px 0px 8px 0px;
+    }
+    .shop__items .item p{
+        font-size:20px;
+        font-weight:bold;
+        color:#333;
+position: relative;
+    }
+    .shop__items .item p:after {
+        content:"";
+        position:absolute;
+        background:url('../assets/images/money_new.svg') no-repeat;
+        width:24px;
+        height:21px;
+        background-size:100%;
+
     }
