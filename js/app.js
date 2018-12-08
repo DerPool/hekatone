@@ -67,7 +67,7 @@ $(document).ready(function() {
             $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
             $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
             $('.login__screen').hide();
-        })
+        }).catch(e => {alert('Нет юзера')})
     })
 
 
