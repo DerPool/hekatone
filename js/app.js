@@ -12,6 +12,7 @@ let shop_opened = false
 
 document.getElementById('store_opener').addEventListener('click', function(e) {
     if (!shop_opened) {
+        $('.question, .question__tooltip, .store').hide();
         shop_opened = true
         $('.store__items').html('')
         $('#store').show(300);
@@ -27,6 +28,7 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
             console.log('failed to load shop')
         })
     } else {
+        $('.question, .question__tooltip, .store').hide();
         $('#store').hide(300)
         shop_opened = false;
         $('.shop__items').html('');
@@ -101,6 +103,7 @@ $(document).ready(function() {
     })
 
     $('#rutina_opener').click(function(){
+        $('.question, .question__tooltip, .store').hide();
         $(this).addClass('active_link');
         $('main').css('background', 'unset');
         $('main').css('overflow-y', 'auto');
@@ -120,6 +123,7 @@ $(document).ready(function() {
     })
 
     $('#cases_opener').click(function(){
+        $('.question, .question__tooltip, .store').hide();
         $('.question__answers').html('');
         $('.question').hide();
         $('main').css('background', 'url(./assets/images/Game.png) no-repeat');
@@ -162,8 +166,12 @@ $(document).ready(function() {
         })
 
             let cases = false;
+            let second = false;
         $('input[type="radio"]:checked').each(function(ind, el) {
             cases = true;
+            if($(el).data('name') === 'six') {
+                second = true;
+            }
             answers_here.push($(el).data('answer'))
             let answ_id = $(el).data('answer');
             let answ_valid = $(el).data('valid');
@@ -177,12 +185,18 @@ $(document).ready(function() {
 
         let cnt = 3;
 
-        if(!(answers_here.includes(5))) {
-            $('input[type="radio"][data-answer="5"]').parent().find('label').css('background', '#f1e5e1');
+        if(!(answers_here.includes(1)) && (cases == true) && (!second)) {
+            $('input[type="radio"][data-answer="1"]').parent().find('label').css('background', '#f1e5e1');
             $('.question').css('transform','translateX(20px)').css('transition','.5s');
-            $('.question__tooltip').show();        }
-
-        if(!(answers_here.includes(2))) {
+            $('.question__tooltip').show();    
+            }
+        if(!(answers_here.includes(2)) && (cases) && (second)) {
+                $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
+                 $('.question').css('transform','translateX(20px)').css('transition','.5s');
+                $('.question__tooltip').show(); 
+                cnt--;    
+            }
+        if(!(answers_here.includes(2)) && (!cases)) {
             $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
              $('.question').css('transform','translateX(20px)').css('transition','.5s');
             $('.question__tooltip').show(); 
@@ -224,7 +238,26 @@ $(document).ready(function() {
             })
          
         }
-        if ((answers_here.includes(5) && (cases == true))) {
+        if ((answers_here.includes(2)) && (second)) {
+            $('.question__answers').html('');
+            $('.question, .question__tooltip').hide();
+            API.getProfile($('#login_name').val()).then(profileInfo => {
+                $('.profile__info h3').text(profileInfo.full_name)
+                $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+                let levels = Math.floor(profileInfo.stat.exp/1000)
+                $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+        
+                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+        
+                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                data.userid = profileInfo.id;
+                $('.login__screen').hide(); })
+        }
+        if ((answers_here.includes(1) && (cases == true) && (!second))) {
             $('.question__answers').html('');
             $('.question, .question__tooltip').hide();
             API.getProfile($('#login_name').val()).then(profileInfo => {
@@ -242,6 +275,73 @@ $(document).ready(function() {
                 $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
                 data.userid = profileInfo.id;
                 $('.login__screen').hide();
+                API.getTaskByID(6).then(task =>  {
+                    console.log(task)
+                    $('.question .question__header p').text(task.questions[0].text);
+                    data.questionid = task.questions[0].id;
+                    const answers = task.questions[0].answers;
+                    for (const answer of answers) {
+                        $('.question__answers').append($(`<div><input type='radio' data-answer=${answer.id} data-name="six" name="six_task" data-valid='${answer.valid}' id='answ${answer.id}' style='display: none;'><label for='answ${answer.id}' class="answer" >${answer.text}</label></div>`))
+                    }
+                    $('.question').delay(500).show(300)
+                })
+                 answers_here = []
+
+
+             cases = false;
+        $('input[type="radio"]:checked').each(function(ind, el) {
+            cases = true;
+            answers_here.push($(el).data('answer'))
+            let answ_id = $(el).data('answer');
+            let answ_valid = $(el).data('valid');
+            if(!answ_valid){
+                $(el).parent().find('label').css('background', '#f1e5e1');
+            } else {
+                $(el).parent().find('label').css('background', '#e7f1e1');
+            }
+
+        })
+
+         cnt = 1;
+
+        if(!(answers_here.includes(2)) && (cases == true)) {
+            $('input[type="radio"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
+            $('.question').css('transform','translateX(20px)').css('transition','.5s');
+            $('.question__tooltip').show();    
+            cnt--
+            }
+
+       
+        API.sendAnswer(data.userid, data.questionid, data.taskid, answers_here);
+        $('.true_answers_count').text(cnt + " из 1")
+
+ 
+        if ((answers_here.includes(2) && (cases == true))) {
+            $('.question__answers').html('');
+            $('.question, .question__tooltip').hide();
+            API.getProfile($('#login_name').val()).then(profileInfo => {
+                $('.profile__info h3').text(profileInfo.full_name)
+                $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
+                let levels = Math.floor(profileInfo.stat.exp/1000)
+                $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
+                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+        
+                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+        
+                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                data.userid = profileInfo.id;
+                $('.login__screen').hide();
+
+
+
+
+            })
+        }
+
+
             })
         }
         /*$('.question__answers').html('');
