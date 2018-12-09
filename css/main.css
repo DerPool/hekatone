@@ -836,10 +836,7 @@ position: relative;
         transition:.225s ease-in-out;
     
     }
-   .mask svg:hover .cls-1 {
-        opacity:.495 !important;
-        transition:.225s ease-in-out;
-    }
+
     .mask svg:active, .mask svg:focus {
         outline:none !important;
     }
