@@ -15,7 +15,7 @@ main {
     position: relative;
     overflow-y: hidden;
     background:url('../assets/images/cabinet.png') no-repeat;
-    background-size:100% 100%;
+background-size:cover;
 }
 
 .active_link {
@@ -818,7 +818,7 @@ position: relative;
     height: 420px;
     margin-left: -20px;
     width: 500px;
-    margin-top: 95px;
+    margin-top: 140px;
 
     }
     .mask {
@@ -845,7 +845,7 @@ position: relative;
     }
     .man {
         display:none;
-        position: absolute;
+        position: fixed;
         bottom: 50px;
         margin-left: 270px;
     }
