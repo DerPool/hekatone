@@ -54,7 +54,7 @@ $(document).ready(function(){
             let mins = date.getMinutes()
             $('.flash_date').text(`${hrs}:${mins}`);
             $('.flash_question').css('bottom', '0%')
-        }, 5000)
+        }, 3000)
         API.getProfile($('#login_name').val()).then(profileInfo => {
             $('.profile__info h3').text(profileInfo.full_name)
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
