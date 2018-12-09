@@ -60,14 +60,14 @@ $(document).ready(function(){
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
             let levels = Math.floor(profileInfo.stat.exp/1000)
             $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-            $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-            $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+            $('.byt').find('.bar__inner').css('width', ((profileInfo.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo.stat.issue.domestic/1000)*100 : ((profileInfo.stat.issue.domestic/1000)*100)-100  + '%');
+            $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic <= 1000 ? profileInfo.stat.issue.domestic : profileInfo.stat.issue.domestic-1000);
     
-            $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-            $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+            $('.ofis').find('.bar__inner').css('width', ((profileInfo.stat.issue.office/1000)*100) <= 100 ? (profileInfo.stat.issue.office/1000)*100 : ((profileInfo.stat.issue.office/1000)*100)-100  + '%');
+            $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office <= 1000 ? profileInfo.stat.issue.office : profileInfo.stat.issue.office-1000);
     
-            $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-            $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+            $('.sud').find('.bar__inner').css('width', ((profileInfo.stat.issue.law/1000)*100) <= 100 ? (profileInfo.stat.issue.law/1000)*100 : ((profileInfo.stat.issue.law/1000)*100)-100 + '%');
+            $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law <= 1000? profileInfo.stat.issue.law: profileInfo.stat.issue.law-1000);
             $('.progress_bar_actions').css('display', 'flex');
             $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
             $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
@@ -82,14 +82,14 @@ $(document).ready(function(){
                     $('.level').text(Math.floor(profileInfo2.stat.exp/1000) + ' уровень');
                     let levels = Math.floor(profileInfo2.stat.exp/1000)
                     $('.full__progress').text(profileInfo2.stat.exp - levels * 1000+'/1000');
-                    $('.byt').find('.bar__inner').css('width', (profileInfo2.stat.issue.domestic/1000)*100 + '%');
-                    $('.byt').find('.bar__inner .curval').text(profileInfo2.stat.issue.domestic);
+                    $('.byt').find('.bar__inner').css('width', ((profileInfo2.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo2.stat.issue.domestic/1000)*100 : ((profileInfo2.stat.issue.domestic/1000)*100)-100  + '%');
+                    $('.byt').find('.bar__inner .curval').text(profileInfo2.stat.issue.domestic <= 1000 ? profileInfo2.stat.issue.domestic : profileInfo2.stat.issue.domestic-1000);
             
-                    $('.ofis').find('.bar__inner').css('width', (profileInfo2.stat.issue.office/1000)*100 + '%');
-                    $('.ofis').find('.bar__inner .curval').text(profileInfo2.stat.issue.office);
+                    $('.ofis').find('.bar__inner').css('width', ((profileInfo2.stat.issue.office/1000)*100) <= 100 ? (profileInfo2.stat.issue.office/1000)*100 : ((profileInfo2.stat.issue.office/1000)*100)-100  + '%');
+                    $('.ofis').find('.bar__inner .curval').text(profileInfo2.stat.issue.office <= 1000 ? profileInfo2.stat.issue.office : profileInfo2.stat.issue.office-1000);
             
-                    $('.sud').find('.bar__inner').css('width', (profileInfo2.stat.issue.law/1000)*100 + '%');
-                    $('.sud').find('.bar__inner .curval').text(profileInfo2.stat.issue.law);
+                    $('.sud').find('.bar__inner').css('width', ((profileInfo2.stat.issue.law/1000)*100) <= 100 ? (profileInfo2.stat.issue.law/1000)*100 : ((profileInfo2.stat.issue.law/1000)*100)-100 + '%');
+                    $('.sud').find('.bar__inner .curval').text(profileInfo2.stat.issue.law <= 1000? profileInfo2.stat.issue.law: profileInfo2.stat.issue.law-1000);
                     $('.progress_bar_actions').css('display', 'flex')
                     $('.energy_b .curval').text(profileInfo2.energy ? profileInfo2.energy : 10);
                     $('.respect_b .curval').text(profileInfo2.respect ? profileInfo2.respect : 5);
@@ -272,14 +272,14 @@ $(document).ready(function(){
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+                $('.byt').find('.bar__inner').css('width', ((profileInfo.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo.stat.issue.domestic/1000)*100 : ((profileInfo.stat.issue.domestic/1000)*100)-100  + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic <= 1000 ? profileInfo.stat.issue.domestic : profileInfo.stat.issue.domestic-1000);
         
-                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+                $('.ofis').find('.bar__inner').css('width', ((profileInfo.stat.issue.office/1000)*100) <= 100 ? (profileInfo.stat.issue.office/1000)*100 : ((profileInfo.stat.issue.office/1000)*100)-100  + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office <= 1000 ? profileInfo.stat.issue.office : profileInfo.stat.issue.office-1000);
         
-                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.sud').find('.bar__inner').css('width', ((profileInfo.stat.issue.law/1000)*100) <= 100 ? (profileInfo.stat.issue.law/1000)*100 : ((profileInfo.stat.issue.law/1000)*100)-100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law <= 1000? profileInfo.stat.issue.law: profileInfo.stat.issue.law-1000);
 
                 $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
                 $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
@@ -295,14 +295,14 @@ $(document).ready(function(){
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+                $('.byt').find('.bar__inner').css('width', ((profileInfo.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo.stat.issue.domestic/1000)*100 : ((profileInfo.stat.issue.domestic/1000)*100)-100  + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic <= 1000 ? profileInfo.stat.issue.domestic : profileInfo.stat.issue.domestic-1000);
         
-                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+                $('.ofis').find('.bar__inner').css('width', ((profileInfo.stat.issue.office/1000)*100) <= 100 ? (profileInfo.stat.issue.office/1000)*100 : ((profileInfo.stat.issue.office/1000)*100)-100  + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office <= 1000 ? profileInfo.stat.issue.office : profileInfo.stat.issue.office-1000);
         
-                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.sud').find('.bar__inner').css('width', ((profileInfo.stat.issue.law/1000)*100) <= 100 ? (profileInfo.stat.issue.law/1000)*100 : ((profileInfo.stat.issue.law/1000)*100)-100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law <= 1000? profileInfo.stat.issue.law: profileInfo.stat.issue.law-1000);
                 data.userid = profileInfo.id;
                 $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
                 $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
@@ -316,14 +316,14 @@ $(document).ready(function(){
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+                $('.byt').find('.bar__inner').css('width', ((profileInfo.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo.stat.issue.domestic/1000)*100 : ((profileInfo.stat.issue.domestic/1000)*100)-100  + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic <= 1000 ? profileInfo.stat.issue.domestic : profileInfo.stat.issue.domestic-1000);
         
-                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+                $('.ofis').find('.bar__inner').css('width', ((profileInfo.stat.issue.office/1000)*100) <= 100 ? (profileInfo.stat.issue.office/1000)*100 : ((profileInfo.stat.issue.office/1000)*100)-100  + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office <= 1000 ? profileInfo.stat.issue.office : profileInfo.stat.issue.office-1000);
         
-                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.sud').find('.bar__inner').css('width', ((profileInfo.stat.issue.law/1000)*100) <= 100 ? (profileInfo.stat.issue.law/1000)*100 : ((profileInfo.stat.issue.law/1000)*100)-100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law <= 1000? profileInfo.stat.issue.law: profileInfo.stat.issue.law-1000);
                 $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
                 $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
@@ -377,14 +377,14 @@ $(document).ready(function(){
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
-                $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
-                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
+                $('.byt').find('.bar__inner').css('width', ((profileInfo.stat.issue.domestic/1000)*100) <= 100 ? (profileInfo.stat.issue.domestic/1000)*100 : ((profileInfo.stat.issue.domestic/1000)*100)-100  + '%');
+                $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic <= 1000 ? profileInfo.stat.issue.domestic : profileInfo.stat.issue.domestic-1000);
         
-                $('.ofis').find('.bar__inner').css('width', (profileInfo.stat.issue.office/1000)*100 + '%');
-                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office);
+                $('.ofis').find('.bar__inner').css('width', ((profileInfo.stat.issue.office/1000)*100) <= 100 ? (profileInfo.stat.issue.office/1000)*100 : ((profileInfo.stat.issue.office/1000)*100)-100  + '%');
+                $('.ofis').find('.bar__inner .curval').text(profileInfo.stat.issue.office <= 1000 ? profileInfo.stat.issue.office : profileInfo.stat.issue.office-1000);
         
-                $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
-                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.sud').find('.bar__inner').css('width', ((profileInfo.stat.issue.law/1000)*100) <= 100 ? (profileInfo.stat.issue.law/1000)*100 : ((profileInfo.stat.issue.law/1000)*100)-100 + '%');
+                $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law <= 1000? profileInfo.stat.issue.law: profileInfo.stat.issue.law-1000);
                 $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
                 $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
