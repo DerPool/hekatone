@@ -69,8 +69,8 @@ $(document).ready(function(){
             $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
             $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
             $('.progress_bar_actions').css('display', 'flex');
-            $('.ener .curval').text(profileInfo.energy ? profileInfo.energy : 10);
-            $('.ent .curval').text(profileInfo.respect ? profileInfo.respect : 5);
+            $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
+            $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
             console.log(profileInfo);
             data.userid = profileInfo.id;
             console.log(data)
@@ -91,8 +91,8 @@ $(document).ready(function(){
                     $('.sud').find('.bar__inner').css('width', (profileInfo2.stat.issue.law/1000)*100 + '%');
                     $('.sud').find('.bar__inner .curval').text(profileInfo2.stat.issue.law);
                     $('.progress_bar_actions').css('display', 'flex')
-                    $('.ener .curval').text(profileInfo2.energy ? profileInfo2.energy : 10);
-                    $('.ent .curval').text(profileInfo2.respect ? profileInfo2.respect : 5);
+                    $('.energy_b .curval').text(profileInfo2.energy ? profileInfo2.energy : 10);
+                    $('.respect_b .curval').text(profileInfo2.respect ? profileInfo2.respect : 5);
                     data.userid = profileInfo2.id;
                     $('.login__screen').hide();
                 })
@@ -278,6 +278,9 @@ $(document).ready(function(){
         
                 $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
                 $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+
+                $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
+                $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
                 $('.login__screen').hide();
             })
@@ -318,6 +321,8 @@ $(document).ready(function(){
         
                 $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
                 $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
+                $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
                 $('.login__screen').hide();
                 API.getTaskByID(6).then(task =>  {
@@ -377,6 +382,8 @@ $(document).ready(function(){
         
                 $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
                 $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
+                $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
+                $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
                 $('.login__screen').hide();
 
