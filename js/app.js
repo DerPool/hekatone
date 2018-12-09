@@ -45,6 +45,7 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
     }
 })
 
+
 let full_profile = false
 $(document).ready(function(){
     $('.log__button').click(function() {
@@ -59,6 +60,10 @@ $(document).ready(function(){
             $('.profile__info h3').text(profileInfo.full_name)
             $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
             let levels = Math.floor(profileInfo.stat.exp/1000)
+            data.level = levels;
+            if (levels > 1) {
+                $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
+            }
             $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
             $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
             $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
@@ -81,6 +86,10 @@ $(document).ready(function(){
                     $('.profile__info h3').text(profileInfo2.full_name)
                     $('.level').text(Math.floor(profileInfo2.stat.exp/1000) + ' уровень');
                     let levels = Math.floor(profileInfo2.stat.exp/1000)
+                    data.level = levels;
+                    if (levels > 1) {
+                        $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
+                    }
                     $('.full__progress').text(profileInfo2.stat.exp - levels * 1000+'/1000');
                     $('.byt').find('.bar__inner').css('width', (profileInfo2.stat.issue.domestic/1000)*100 + '%');
                     $('.byt').find('.bar__inner .curval').text(profileInfo2.stat.issue.domestic);
@@ -117,7 +126,11 @@ $(document).ready(function(){
 
     $('#rutina_opener').click(function(){
         $('.man').hide();
-        $('main').css('background', 'url(./assets/images/cabinet.png) no-repeat');
+        if (data.levels > 1) {
+            $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
+        } else {
+            $('main').css('background', 'url(./assets/images/cabinet.png) no-repeat');
+        }
         $('main').css('background-size', 'cover');
         $('main').css('overflow-y','hidden');
         $('.mask').show()
@@ -372,6 +385,7 @@ $(document).ready(function(){
         if ((answers_here.includes(2) && (cases == true))) {
             $('.question__answers').html('');
             $('.question, .question__tooltip').hide();
+
             API.getProfile($('#login_name').val()).then(profileInfo => {
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
