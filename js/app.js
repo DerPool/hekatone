@@ -71,6 +71,7 @@ $(document).ready(function(){
             $('.progress_bar_actions').css('display', 'flex');
             $('.ener .curval').text(profileInfo.energy ? profileInfo.energy : 10);
             $('.ent .curval').text(profileInfo.respect ? profileInfo.respect : 5);
+            console.log(profileInfo);
             data.userid = profileInfo.id;
             console.log(data)
             $('.login__screen').hide();
