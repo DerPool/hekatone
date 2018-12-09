@@ -63,6 +63,7 @@ $(document).ready(function(){
             data.level = levels;
             if (levels > 1) {
                 $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
+                $('main').css('background-size', 'cover');
             }
             $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
             $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
@@ -89,6 +90,7 @@ $(document).ready(function(){
                     data.level = levels;
                     if (levels > 1) {
                         $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
+                        $('main').css('background-size', 'cover');
                     }
                     $('.full__progress').text(profileInfo2.stat.exp - levels * 1000+'/1000');
                     $('.byt').find('.bar__inner').css('width', (profileInfo2.stat.issue.domestic/1000)*100 + '%');
