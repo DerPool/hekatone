@@ -225,12 +225,14 @@ $(document).ready(function(){
         let cnt = 3;
 
         if(!(answers_here.includes(1)) && (cases == true) && (!second)) {
+            $('.tooltip').text('Составляющей частью преступления является объект. При убийстве и умышленном причинении тяжкого телесного повреждения объектом преступления является жизнь и здоровье человека. Так как отец Татьяны Николаевны уже был мертв, в действиях соседа по купе состав преступления отсутствует.')
             $('input[type="radio"][data-answer="1"]').parent().find('label').css('background', '#f1e5e1');
             $('.question').css('transform','translateX(20px)').css('transition','.5s');
             $('.question__tooltip').show();    
             cnt--;
             }
         if(!(answers_here.includes(2)) && (cases) && (second)) {
+            $('.tooltip').html('93 х 805,80 = 74939,40 – стоимость 93 шт. iPad-4 <br>74939,40 – 64063,05 = 10876,35 – экономия.')
                 $('input[type="checkbox"][data-answer="2"]').parent().find('label').css('background', '#f1e5e1');
                  $('.question').css('transform','translateX(20px)').css('transition','.5s');
                 $('.question__tooltip').show(); 
