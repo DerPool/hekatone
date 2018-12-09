@@ -101,7 +101,7 @@ $(document).ready(function(){
     })
 
     $('.btns').click(function(){
-        $('.flash_question').css('bottom', '-500%').delay(300).hide();
+        $('.flash_question').css('bottom', '-500%').delay(1000).hide();
     })
 
     $('.profile__exit').click(function(e){
