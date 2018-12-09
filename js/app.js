@@ -282,7 +282,6 @@ $(document).ready(function(){
                 $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
                 $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
                 data.userid = profileInfo.id;
-                $('.login__screen').hide();
             })
          
         }
@@ -303,7 +302,9 @@ $(document).ready(function(){
                 $('.sud').find('.bar__inner').css('width', (profileInfo.stat.issue.law/1000)*100 + '%');
                 $('.sud').find('.bar__inner .curval').text(profileInfo.stat.issue.law);
                 data.userid = profileInfo.id;
-                $('.login__screen').hide(); })
+                $('.energy_b .curval').text(profileInfo.energy ? profileInfo.energy : 10);
+                $('.respect_b .curval').text(profileInfo.respect ? profileInfo.respect : 5);
+ })
         }
         if ((answers_here.includes(1) && (cases == true) && (!second))) {
             $('.question__answers').html('');
