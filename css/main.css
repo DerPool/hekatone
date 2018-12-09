@@ -864,6 +864,9 @@ position: relative;
         padding: 4px;
         font-size: 14px;
         color: #fff;
+        text-align: center;
+        font-weight: 600;
+        text-transform: uppercase;
         background: #ccc;
         border-radius: 4px;
     }
