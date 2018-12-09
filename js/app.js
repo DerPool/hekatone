@@ -64,6 +64,7 @@ $(document).ready(function(){
             if (levels > 1) {
                 $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
                 $('main').css('background-size', 'cover');
+                $('.rank').text('Middle')
             }
             $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
             $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
@@ -91,6 +92,7 @@ $(document).ready(function(){
                     if (levels > 1) {
                         $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
                         $('main').css('background-size', 'cover');
+                        $('.rank').text('Middle')
                     }
                     $('.full__progress').text(profileInfo2.stat.exp - levels * 1000+'/1000');
                     $('.byt').find('.bar__inner').css('width', (profileInfo2.stat.issue.domestic/1000)*100 + '%');
@@ -287,6 +289,9 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                if(levels > 1) {
+                    $('.rank').text('Middle')
+                }
                 data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
@@ -311,6 +316,9 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                if (levels > 1) {
+                    $('.rank').text('Middle')
+                }
                 data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
@@ -333,6 +341,9 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                if( levels > 1 ) {
+                    $('.rank').text('Middle')
+                }
                 data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
@@ -396,6 +407,10 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                if( levels > 1) {
+                    $('.rank').text('Middle')
+
+                }
                 data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
