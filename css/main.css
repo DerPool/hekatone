@@ -323,7 +323,8 @@ nav {
     position: absolute;
     z-index: 99999999;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 40px;
     flex-direction: column;
     top: 0;
     left: 0;
