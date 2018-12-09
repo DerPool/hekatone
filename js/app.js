@@ -14,7 +14,8 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
 
     if (!shop_opened) {
         $('.question, .question__tooltip, .store').hide();
-        shop_opened = true
+        shop_opened = true;
+        $('.man').hide();
         $('#store').show(300);
         $('main').css('background', 'url(./assets/images/shop.png) no-repeat');
         $('main').css('background-size', 'cover');
@@ -112,11 +113,14 @@ $(document).ready(function(){
     })
 
     $('#rutina_opener').click(function(){
+        $('.man').hide();
         $('main').css('background', 'url(./assets/images/cabinet.png) no-repeat');
         $('main').css('background-size', 'cover');
         $('main').css('overflow-y','hidden');
         $('.mask').show()
         $('.question, .question__tooltip, #store').hide();
+        $(this).addClass('active_link');
+        $('#cases_opener, #store_opener').removeClass('active_link')
 
     })
 
@@ -153,6 +157,7 @@ $(document).ready(function(){
     })
 
     $('#cases_opener').click(function(){
+        $('.man').show();
         $('.question, .question__tooltip, .store').hide();
         $('.question__answers').html('');
         $('.question').hide();

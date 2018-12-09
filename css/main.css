@@ -15,7 +15,7 @@ main {
     position: relative;
     overflow-y: hidden;
     background:url('../assets/images/cabinet.png') no-repeat;
-    background-size:cover;
+    background-size:100% 100%;
 }
 
 .active_link {
@@ -815,10 +815,10 @@ position: relative;
 
     align-self: center;
     position: absolute;
-    min-width: 53%;
-    height: 54%;
-    margin-left: -21px;
-    bottom: 20px;
+    height: 420px;
+    margin-left: -20px;
+    width: 500px;
+    margin-top: 95px;
 
     }
     .mask {
@@ -842,4 +842,14 @@ position: relative;
     }
     .mask svg:active, .mask svg:focus {
         outline:none !important;
+    }
+    .man {
+        display:none;
+        position: absolute;
+        bottom: 50px;
+        margin-left: 270px;
+    }
+    
+    .man img {
+        height:200px;
     }
