@@ -850,3 +850,9 @@ position: relative;
     .man img {
         height:200px;
     }
+
+    .logoimg {
+        z-index: 9999999999;
+        align-self: flex-end;
+        margin-right: 30%;    
+    }
