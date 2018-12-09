@@ -19,6 +19,7 @@ document.getElementById('store_opener').addEventListener('click', function(e) {
         $('main').css('background', 'url(./assets/images/shop.png) no-repeat');
         $('main').css('background-size', 'cover');
         $('main').css('overflow-y','hidden');
+        $('.mask').hide();
         $('#rutina_opener, #cases_opener').removeClass('active_link');
         $(this).addClass('active_link'); 
         $('.items').html('');
@@ -110,6 +111,15 @@ $(document).ready(function(){
         $('profile__full').show(300);
     })
 
+    $('#rutina_opener').click(function(){
+        $('main').css('background', 'url(./assets/images/cabinet.png) no-repeat');
+        $('main').css('background-size', 'cover');
+        $('main').css('overflow-y','hidden');
+        $('.mask').show()
+        $('.question, .question__tooltip, #store').hide();
+
+    })
+
     $('.profile__top').click(function(){
         if (!full_profile) {
             $('.profile__full-outer').css('opacity', '1');
@@ -122,10 +132,10 @@ $(document).ready(function(){
         }
     })
 
-    $('#rutina_opener').click(function(){
-        $('.question, .question__tooltip, .store').hide();
-        $(this).addClass('active_link');
-        $('main').css('background', 'unset');
+    $('.mask svg').click(function(){
+        $('.question, .question__tooltip, #store').hide();
+        //$(this).addClass('active_link');
+        // $('main').css('background', 'unset');
         $('main').css('overflow-y', 'auto');
         $('#cases_opener, #store_opener').removeClass('active_link')
         $('.question__answers').html('');
@@ -146,6 +156,7 @@ $(document).ready(function(){
         $('.question, .question__tooltip, .store').hide();
         $('.question__answers').html('');
         $('.question').hide();
+        $('.mask').hide();
         $('main').css('background', 'url(./assets/images/Game.png) no-repeat');
         $('main').css('background-size', 'cover');
         $('main').css('overflow-y','auto');
