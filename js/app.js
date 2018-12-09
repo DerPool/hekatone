@@ -128,7 +128,7 @@ $(document).ready(function(){
 
     $('#rutina_opener').click(function(){
         $('.man').hide();
-
+        console.log(+$('.level').text().split(' ')[0] > 1)
         if (+$('.level').text().split(' ')[0] > 1) {
             $('main').css('background', 'url(./assets/images/cabinet_lux.png) no-repeat');
         } else {
