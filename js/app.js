@@ -286,6 +286,7 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
                 $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
@@ -309,6 +310,7 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
                 $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
@@ -330,6 +332,7 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
                 $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
@@ -392,6 +395,7 @@ $(document).ready(function(){
                 $('.profile__info h3').text(profileInfo.full_name)
                 $('.level').text(Math.floor(profileInfo.stat.exp/1000) + ' уровень');
                 let levels = Math.floor(profileInfo.stat.exp/1000)
+                data.level = levels;
                 $('.full__progress').text(profileInfo.stat.exp - levels * 1000+'/1000');
                 $('.byt').find('.bar__inner').css('width', (profileInfo.stat.issue.domestic/1000)*100 + '%');
                 $('.byt').find('.bar__inner .curval').text(profileInfo.stat.issue.domestic);
